@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+<body>
+    <nav>
+         <a href="{{ url_for('index') }}">Accueil</a>
+         <a href="{{ url_for('retrain') }}">Mise à jour du modèle</a>
+      </nav>
+        <!-- The form for uploading an image -->
+    <form method="POST" enctype="multipart/form-data">
+      <label for="image">Upload an image:</label>
+      <input type="file" name="photos" multiple="multiple" accept="image/*">
+        {% if hasFile == False %}
+            <div class="error">Please select a file</div>
+        {% endif %}
+        <input type="submit" value="Predict" onclick="showLoader()">
+        <div class="loader" style="display: none"></div>
+
+    </form>
+
+<script>
+function showLoader(){
+    document.querySelector('.loader').style.display = 'block';
+  }
+
+</script>
+
+</body>
+</html>

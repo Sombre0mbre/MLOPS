@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Résultats de la classification</title>
+      <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+   </head>
+   <body>
+   <nav>
+         <a href="{{ url_for('index') }}">Accueil</a>
+         <a href="{{ url_for('retrain') }}">Mise à jour du modèle</a>
+   </nav>
+   <h1>Résultats de la classification</h1>
+   <div class="wrapper">
+      {% for image, prediction in images %}
+            <div class="image">
+                <p>{{ image }}</p>
+                <img src="{{ url_for('display_image', filename=image) }}">
+                <p>{{ prediction }}</p>
+            </div>
+        {% endfor %}
+    </div>
+   </body>
+</html>
